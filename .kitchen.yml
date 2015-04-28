@@ -4,10 +4,8 @@ driver_config:
   require_chef_omnibus: true
 
 platforms:
-- name: ubuntu-13.04
+- name: ubuntu-14.04
   driver_config:
-    box: opscode-ubuntu-13.04
-    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-13.04_provisionerless.box
     customize:
       memory: 1024
     network:
@@ -16,17 +14,6 @@ platforms:
   run_list:
   - recipe[apt]
 
-- name: centos-6.4
-  driver_config:
-    box: opscode-centos-6.4
-    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box
-    customize:
-      memory: 1024
-    network:
-      - ["forwarded_port", {guest: 80, host: 8080}]
-      - ["forwarded_port", {guest: 8080, host: 8081}]
-  run_list:
-  - recipe[yum]
 
 suites:
 - name: default
